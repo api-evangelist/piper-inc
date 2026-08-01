@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.playpiper.in/.well-known/ucp, https://www.playpiper.in/.well-known/openid-configuration
+notes: >-
+  Cross-cutting standards the Piper storefront (Shopify store 9256256) conforms to,
+  evidenced by its published discovery documents. These are platform-provided
+  (Shopify) but served on Piper's domain.
+standards:
+- id: openid-connect
+  conforms: true
+  evidence: /.well-known/openid-configuration published (Shopify Customer Account OIDC)
+- id: oauth2
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server published; authorization_code + refresh_token grants
+- id: oauth2-pkce
+  conforms: true
+  evidence: code_challenge_methods_supported includes S256
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns 200 with issuer/token/authorization endpoints
+- id: ucp-universal-commerce-protocol
+  conforms: true
+  evidence: /.well-known/ucp merchant profile advertises UCP 2026-04-08 and 2026-01-23
+- id: mcp-model-context-protocol
+  conforms: true
+  evidence: dev.ucp.shopping service exposes an MCP transport endpoint at /api/ucp/mcp
+- id: fhir-r4
+  conforms: false
+- id: fapi
+  conforms: false

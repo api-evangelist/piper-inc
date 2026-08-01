@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: live probe of https://www.playpiper.in/.well-known/*
+host: https://www.playpiper.in
+notes: >-
+  Piper's storefront runs on Shopify (store id 9256256 / piper-llc.myshopify.com).
+  The OIDC + OAuth discovery documents are Shopify Customer Account Authentication,
+  and /.well-known/ucp is the store's Universal Commerce Protocol merchant profile
+  (agent-driven commerce). These are served on Piper's domain but provided by the
+  Shopify platform.
+documents:
+- path: /.well-known/openid-configuration
+  status: 200
+  file: piper-inc-openid-configuration.json
+- path: /.well-known/oauth-authorization-server
+  status: 200
+  file: piper-inc-oauth-authorization-server.json
+- path: /.well-known/ucp
+  status: 200
+  file: piper-inc-ucp.json
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404

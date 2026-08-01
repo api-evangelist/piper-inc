@@ -1,0 +1,54 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://www.playpiper.in/.well-known/ucp
+notes: >-
+  Piper's Shopify store (id 9256256 / piper-llc.myshopify.com) exposes a live
+  Universal Commerce Protocol (UCP) MCP endpoint for agent-driven commerce,
+  discovered via /llms.txt and the /.well-known/ucp merchant profile. The tool
+  surface is the Shopify UCP shopping service; call MCP `tools/list` at the
+  endpoint for authoritative tool schemas. Checkout requires human approval.
+server:
+  name: piper-ucp-shopping
+  transport: mcp
+  protocol: streamable-http
+  url: https://piper-llc.myshopify.com/api/ucp/mcp
+  alt_url: https://www.playpiper.com/api/ucp/mcp
+  ucp_versions:
+  - '2026-04-08'
+  - '2026-01-23'
+  service: dev.ucp.shopping
+  schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+capabilities:
+- dev.ucp.shopping.catalog.search
+- dev.ucp.shopping.catalog.lookup
+- dev.ucp.shopping.cart
+- dev.ucp.shopping.checkout
+- dev.ucp.shopping.fulfillment
+- dev.ucp.shopping.discount
+- dev.ucp.shopping.order
+- dev.shopify.catalog
+payment_handlers:
+- com.google.pay
+- dev.shopify.card
+- dev.shopify.shop_pay
+tools:
+- name: search_catalog
+  description: Find products matching the buyer's intent (catalog search).
+  source: llms.txt agent flow
+- name: create_cart
+  description: Create a cart and add desired items.
+  source: llms.txt agent flow
+- name: create_checkout
+  description: Start the purchase flow for a cart.
+  source: llms.txt agent flow
+- name: update_checkout
+  description: Set shipping address and method on a checkout.
+  source: llms.txt agent flow
+- name: complete_checkout
+  description: Finalize the purchase; buyer must explicitly approve payment.
+  source: llms.txt agent flow
+rules:
+- Checkout requires contemporaneous human/buyer approval before payment.
+- MCP endpoint is rate-limited per IP; back off on 429.
+- Pass context.address_country and context.currency for accurate pricing.

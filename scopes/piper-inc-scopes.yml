@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.playpiper.in/.well-known/openid-configuration
+docs: https://shopify.dev/docs/api/customer
+notes: >-
+  OAuth/OIDC scopes advertised by the Shopify Customer Account Authentication
+  server for the Piper store (id 9256256), from scopes_supported in the OIDC
+  discovery document.
+schemes:
+- name: ShopifyCustomerAccountOIDC
+  source: well-known/piper-inc-openid-configuration.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://shopify.com/authentication/9256256/oauth/authorize
+    tokenUrl: https://shopify.com/authentication/9256256/oauth/token
+scopes:
+- scope: openid
+  description: OpenID Connect authentication; issue an ID token for the customer.
+  flows: [authorizationCode]
+- scope: email
+  description: Access the customer's email address and verification status.
+  flows: [authorizationCode]
+- scope: customer-account-api:full
+  description: Full access to the Shopify Customer Account API on the buyer's behalf.
+  flows: [authorizationCode]
+- scope: customer-account-mcp-api:full
+  description: Full access to the Customer Account MCP API for agent-driven commerce.
+  flows: [authorizationCode]

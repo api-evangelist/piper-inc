@@ -1,7 +1,28 @@
 aid: piper-inc
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/piper-inc.png
 name: Piper Inc.
-description: Piper Inc. is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Piper (Piper Learning, Inc. / Piper LLC) is an educational-technology company that
+  makes hands-on STEM learning kits — most notably the Piper Computer Kit, a buildable
+  wooden computer that teaches circuitry and coding through Minecraft, and Piper Make,
+  a browser-based platform for exploring electronics and Python. Its consumer storefront
+  runs on Shopify and exposes an agent-commerce surface: a Universal Commerce Protocol
+  (UCP) merchant profile with an MCP endpoint plus Shopify Customer Account OpenID
+  Connect, letting AI shopping agents search the catalog, build carts, and check out
+  with explicit buyer approval. Surfaced as a 500 Global portfolio company and enriched
+  from its live public agent/discovery surface.
 url: https://raw.githubusercontent.com/api-evangelist/piper-inc/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,15 +32,71 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Education
+- EdTech
+- STEM
+- Hardware
+- E-Commerce
+- Agentic Commerce
+- MCP
+- Shopify
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: Piper Commerce (UCP)
+  description: >-
+    Agent-driven commerce for the Piper storefront over the Universal Commerce Protocol
+    (UCP), exposed as an MCP endpoint on the store's Shopify platform (store id 9256256).
+    Catalog search/lookup, cart, checkout, fulfillment, discount, and order capabilities,
+    with Google Pay / Shopify card / Shop Pay payment handlers. Checkout requires buyer
+    approval.
+  humanURL: https://www.playpiper.com
+  baseURL: https://piper-llc.myshopify.com/api/ucp/mcp
+  tags:
+  - Commerce
+  - MCP
+  - UCP
+  - Shopify
+  properties:
+  - type: MCPServer
+    url: mcp/piper-inc-mcp.yml
+  - type: Authentication
+    url: authentication/piper-inc-authentication.yml
+  - type: OAuthScopes
+    url: scopes/piper-inc-scopes.yml
 common:
 - type: Website
   url: https://playpiper.in
+- type: Blog
+  url: https://www.playpiper.in/blogs/news
+- type: Support
+  url: https://www.playpiper.in/pages/getsupport
+- type: TermsOfService
+  url: https://www.playpiper.in/policies/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.playpiper.in/policies/privacy-policy
+- type: MCPServer
+  url: mcp/piper-inc-mcp.yml
+- type: Authentication
+  url: authentication/piper-inc-authentication.yml
+- type: OAuthScopes
+  url: scopes/piper-inc-scopes.yml
+- type: WellKnown
+  url: well-known/piper-inc-well-known.yml
+- type: LLMsTxt
+  url: llms/piper-inc-llms.txt
+- type: Conformance
+  url: conformance/piper-inc-conformance.yml
+- type: DomainSecurity
+  url: security/piper-inc-domain-security.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 7
+  pass: local-v1

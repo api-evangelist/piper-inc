@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.playpiper.in/.well-known/openid-configuration
+docs: https://shopify.dev/docs/api/customer
+notes: >-
+  Auth is Shopify Customer Account Authentication (OpenID Connect) for the Piper
+  store (id 9256256). Discovery published at /.well-known/openid-configuration and
+  /.well-known/oauth-authorization-server. Agent commerce (UCP MCP) additionally
+  uses the customer-account-mcp-api:full scope. No provider-authored OpenAPI is
+  published for this storefront.
+summary:
+  types:
+  - openIdConnect
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+  pkce: S256
+schemes:
+- name: ShopifyCustomerAccountOIDC
+  type: openIdConnect
+  issuer: https://shopify.com/authentication/9256256
+  openIdConnectUrl: https://www.playpiper.in/.well-known/openid-configuration
+  authorization_endpoint: https://shopify.com/authentication/9256256/oauth/authorize
+  token_endpoint: https://shopify.com/authentication/9256256/oauth/token
+  end_session_endpoint: https://shopify.com/authentication/9256256/logout
+  jwks_uri: https://shopify.com/authentication/9256256/.well-known/jwks.json
+  response_types: [code]
+  grant_types:
+  - authorization_code
+  - refresh_token
+  - urn:ietf:params:oauth:grant-type:jwt-bearer
+  token_endpoint_auth_methods: [client_secret_basic]
+  code_challenge_methods: [S256]
+  id_token_signing_alg: [RS256]
+  scopes:
+  - openid
+  - email
+  - customer-account-api:full
+  - customer-account-mcp-api:full
