@@ -2,11 +2,9 @@ generated: '2026-07-20'
 method: searched
 status: published
 source: https://www.playpiper.in/.well-known/ucp
-notes: >-
-  Piper's Shopify store (id 9256256 / piper-llc.myshopify.com) exposes a live
-  Universal Commerce Protocol (UCP) MCP endpoint for agent-driven commerce,
-  discovered via /llms.txt and the /.well-known/ucp merchant profile. The tool
-  surface is the Shopify UCP shopping service; call MCP `tools/list` at the
+notes: Piper's Shopify store (id 9256256 / piper-llc.myshopify.com) exposes a live Universal Commerce
+  Protocol (UCP) MCP endpoint for agent-driven commerce, discovered via /llms.txt and the /.well-known/ucp
+  merchant profile. The tool surface is the Shopify UCP shopping service; call MCP `tools/list` at the
   endpoint for authoritative tool schemas. Checkout requires human approval.
 server:
   name: piper-ucp-shopping
@@ -52,3 +50,11 @@ rules:
 - Checkout requires contemporaneous human/buyer approval before payment.
 - MCP endpoint is rate-limited per IP; back off on 429.
 - Pass context.address_country and context.currency for accurate pricing.
+deployment:
+  mode: remote
+  endpoint: https://piper-llc.myshopify.com/api/ucp/mcp
+  verified: probed
+  probe: live
+  tools: 13
+  checked: '2026-08-12'
+  source: catalog MCP census
