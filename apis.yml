@@ -72,6 +72,11 @@ apis:
   tags:
   - Commerce
   - MCP
+  - Universal Commerce Protocol
+  - Shopify
+  tags_raw:
+  - Commerce
+  - MCP
   - UCP
   - Shopify
   properties:
