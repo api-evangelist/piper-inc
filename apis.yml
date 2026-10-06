@@ -43,7 +43,7 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-10-06'
 tags:
 - Company
 - Education
@@ -90,6 +90,8 @@ apis:
   x-platform: shopify
   x-platform-surface: ucp
 common:
+- url: https://www.playpiper.in/blogs/news.atom
+  type: BlogRSS
 - type: Website
   url: https://playpiper.in
 - type: Blog
